@@ -17,6 +17,8 @@ export const skills = [
   { name: "Bash", level: "Shell Scripting", icon: "mdi-bash", color: "#4EAA25" },
   { name: "Vue.js", level: "Frontend Framework", icon: "mdi-vuejs", color: "#42b883" },
   { name: "Vuetify", level: "UI Framework", icon: "mdi-vuetify", color: "#1867C0" },
+  { name: "HTML", level: "Frontend Development", icon: "mdi-language-html5", color: "#E34F26" },
+  { name: "Docker", level: "Containerization", icon: "mdi-docker", color: "#1572B6" },
 ];
 
 export const education = [
@@ -30,7 +32,7 @@ export const projects = [
     title: "AI Automation System",
     description: "Automation of email and task workflows using AI integration.",
     date: "Feb 2024",
-    techs: ["Zapier", "ChatGPT", "Gmail API"],
+    techs: ["Zapier", "ChatGPT", "Gemini AI", "Gmail API"],
     link: "https://zapier.com/app/assets/zaps",
     image: zapier,
   },
