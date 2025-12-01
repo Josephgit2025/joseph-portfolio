@@ -4,4 +4,4 @@
 
 Portfolio personnel développé avec Vue.js 3, Vuetify 3 et Vite.
 
-🌐 **Site en ligne** : [https://josephgit2025.github.io/joseph-portfolio-public/](https://josephgit2025.github.io/joseph-portfolio-public/)
+🌐 **Site en ligne** : https://josephgit2025.github.io/joseph-portfolio/
