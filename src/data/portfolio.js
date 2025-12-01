@@ -1,6 +1,7 @@
 import malware from "@/img/malware.jpg";
 import jobdeed from "@/img/jobdeed.jpg";
 import zapier from "@/img/zapier.jpeg";
+import pre_msc from "@/img/pre_msc.png";
 
 export const menuItems = [
   { text: "Home", href: "#home" },
@@ -48,5 +49,13 @@ export const projects = [
     techs: ["Vue.js", "Node.js", "Express", "MariaDB"],
     link: "https://github.com/EpitechMscProPromo2028/T-WEB-501-NAN_5.git",
     image: jobdeed,
+  },
+  {
+    title: " 2D video game project with Java",
+    description: "A defense where a hero fights zombies to protect his base. Real-time combat system with 5 upgradable weapons, unit shop, gold economy, multidirectional animations and customized UI. MVC architecture with unit tests.",
+    date: "Nov 2025",
+    techs: ["Java", "LibGDX", "Gradle", "JUnit"],
+    link: "https://github.com/EpitechMscProPromo2028/T-JAV-501-NAN_2.git",
+    image: pre_msc,
   },
 ];
