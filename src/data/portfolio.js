@@ -35,14 +35,6 @@ export const projects = [
     image: zapier,
   },
   {
-    title: "Malware License Platform",
-    description: "E-commerce platform prototype to simulate secure sales of digital software keys.",
-    date: "Oct 2025",
-    techs: ["HTML", "CSS", "JavaScript"],
-    link: "https://github.com/EpitechMscProPromo2028/T-WEB-500-digitalResume-NAN_joseph-marie-bile.git",
-    image: malware,
-  },
-  {
     title: "Job Web Platform",
     description: "Full-stack job-matching platform for recruiters and candidates.",
     date: "Sep 2025",
