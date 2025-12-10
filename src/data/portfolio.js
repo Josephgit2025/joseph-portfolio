@@ -1,7 +1,7 @@
-import malware from "@/img/malware.jpg";
 import jobdeed from "@/img/jobdeed.jpg";
 import zapier from "@/img/zapier.jpeg";
 import pre_msc from "@/img/pre_msc.png";
+import jenkins from "@/img/jenkins.png";
 
 export const menuItems = [
   { text: "Home", href: "#home" },
@@ -19,6 +19,7 @@ export const skills = [
   { name: "Vuetify", level: "UI Framework", icon: "mdi-vuetify", color: "#1867C0" },
   { name: "HTML", level: "Frontend Development", icon: "mdi-language-html5", color: "#E34F26" },
   { name: "Docker", level: "Containerization", icon: "mdi-docker", color: "#1572B6" },
+  { name: "Jenkins", level: "CI/CD", icon: "mdi-jenkins", color: "#D24939" },  
 ];
 
 export const education = [
@@ -45,11 +46,20 @@ export const projects = [
     image: jobdeed,
   },
   {
-    title: " 2D video game project with Java",
+    title: "2D video game project with Java",
     description: "A defense where a hero fights zombies to protect his base. Real-time combat system with 5 upgradable weapons, unit shop, gold economy, multidirectional animations and customized UI. MVC architecture with unit tests.",
     date: "Nov 2025",
     techs: ["Java", "LibGDX", "Gradle", "JUnit"],
     link: "https://github.com/EpitechMscProPromo2028/T-JAV-501-NAN_2.git",
     image: pre_msc,
   },
+    {
+    title: "Jenkins CI/CD Automation",
+    description: "Complete automation of a Jenkins instance without manual configuration. Technologies: Jenkins, YAML (JCasC), Groovy (DSL Job), Docker. Achievements:Declarative configuration of Jenkins via Configuration as Code. Authentication system with 4 users and secure password management via environment variables. Role-based authorization strategy with 4 roles with granular permissions. SEED Job dynamically generating CI/CD pipelines for any GitHub project. SCM integration with automatic polling to trigger builds.",
+    date: "Dev 2025",
+    techs: ["Jenkins", "Docker", "YAML", "Groovy"],
+    link: "https://github.com/EpitechMscProPromo2028/T-DOP-502-NAN_13.git",
+    image: jenkins,
+  },
+
 ];
