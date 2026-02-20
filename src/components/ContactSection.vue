@@ -112,7 +112,7 @@
             block
             color="primary" 
             size="large"
-            href="/public/mon_cv.pdf" 
+            :href="`${import.meta.env.BASE_URL}mon_cv.pdf`" 
             download
             rounded="xl"
             variant="flat"
