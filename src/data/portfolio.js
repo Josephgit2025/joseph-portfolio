@@ -12,14 +12,14 @@ export const menuItems = [
 ];
 
 export const skills = [
-  { name: "Linux", level: "Parrot / Debian", icon: "mdi-linux", color: "#FCC624" },
+  { name: "Linux", level: "Parrot / Debian", icon: "mdi-linux", color: "#8677771b" },
   { name: "Java", level: "Backend Development", icon: "mdi-language-java", color: "#007396" },
-  { name: "Bash", level: "Shell Scripting", icon: "mdi-bash", color: "#4EAA25" },
   { name: "Vue.js", level: "Frontend Framework", icon: "mdi-vuejs", color: "#42b883" },
   { name: "Vuetify", level: "UI Framework", icon: "mdi-vuetify", color: "#1867C0" },
   { name: "HTML", level: "Frontend Development", icon: "mdi-language-html5", color: "#E34F26" },
   { name: "Docker", level: "Containerization", icon: "mdi-docker", color: "#1572B6" },
-  { name: "Jenkins", level: "CI/CD", icon: "mdi-jenkins", color: "#D24939" },  
+  { name: "Jenkins", level: "CI/CD", icon: "mdi-jenkins", color: "#D24939" },
+  {name: "Python", level: "Scripting and Automation", icon: "mdi-language-python", color: "#dbd53a"},  
 ];
 
 export const education = [
