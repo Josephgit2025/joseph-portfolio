@@ -112,7 +112,7 @@
             block
             color="primary" 
             size="large"
-            href="/public/JOSEPH CV.pdf" 
+            href="/public/mon_cvpdf" 
             download
             rounded="xl"
             variant="flat"
