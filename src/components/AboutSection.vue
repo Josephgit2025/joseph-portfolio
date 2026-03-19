@@ -93,19 +93,20 @@ defineProps({
   font-weight: 800;
   margin-bottom: 40px;
   text-align: center;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: var(--card-bg) !important;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--card-border);
+  transition: background 0.3s ease;
 }
 
 .about-text {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--text-secondary);
   margin-bottom: 16px;
 }
 
@@ -133,14 +134,15 @@ defineProps({
 
 .stat-label {
   font-size: 0.9rem;
-  color: #777;
+  color: var(--text-tertiary);
   margin-top: 8px;
 }
 
 .skills-card {
-  background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%) !important;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
+  border: 1px solid var(--card-border);
   height: 100%;
+  transition: background 0.3s ease;
 }
 
 .skill-item {
@@ -162,12 +164,12 @@ defineProps({
 .skill-name {
   font-weight: 700;
   font-size: 1rem;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .skill-level {
   font-size: 0.85rem;
-  color: #777;
+  color: var(--text-tertiary);
 }
 
 .fade-in {

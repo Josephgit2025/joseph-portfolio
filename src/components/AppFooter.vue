@@ -34,8 +34,9 @@ const year = computed(() => new Date().getFullYear());
 
 <style scoped>
 .footer-gradient {
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-  border-top: 1px solid rgba(102, 126, 234, 0.1);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-top: 1px solid var(--card-border);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .footer-logo {

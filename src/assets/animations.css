@@ -1,15 +1,74 @@
-/* Variables & Global Styles */
-:root {
+/* ===== VARIABLES GLOBALES POUR LES THÈMES ===== */
+:root,
+:root.light-mode {
+  /* Gradients */
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --blue-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  
+  /* Couleurs principales */
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #42a5f5;
+  
+  /* Fonds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #eeeeee;
+  --bg-gradient: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+  
+  /* Textes */
+  --text-primary: #2c3e50;
+  --text-secondary: #555555;
+  --text-tertiary: #888888;
+  
+  /* Cartes */
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(102, 126, 234, 0.2);
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Éléments */
+  --surface: #ffffff;
+  --overlay-light: rgba(255, 255, 255, 0.8);
+}
+
+:root.dark-mode {
+  /* Gradients (même) */
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --blue-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  
+  /* Couleurs principales */
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --accent-color: #42a5f5;
+  
+  /* Fonds */
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --bg-gradient: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+  
+  /* Textes */
+  --text-primary: #e8e8e8;
+  --text-secondary: #b3b3b3;
+  --text-tertiary: #888888;
+  
+  /* Cartes */
+  --card-bg: rgba(28, 28, 28, 0.95);
+  --card-border: rgba(102, 126, 234, 0.3);
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  
+  /* Éléments */
+  --surface: #1a1a1a;
+  --overlay-light: rgba(30, 30, 30, 0.8);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Animations */
+/* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
   from {
     opacity: 0;

@@ -137,13 +137,13 @@ defineProps({
 .home-subtitle {
   font-size: 1.3rem;
   font-weight: 500;
-  color: #666;
+  color: var(--text-secondary);
   animation: fadeInUp 0.8s ease 0.2s both;
 }
 
 .home-description {
   font-size: 1.1rem;
-  color: #777;
+  color: var(--text-tertiary);
   max-width: 600px;
   animation: fadeInUp 0.8s ease 0.4s both;
 }

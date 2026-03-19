@@ -83,13 +83,14 @@ defineProps({
   font-weight: 800;
   margin-bottom: 40px;
   text-align: center;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: var(--card-bg) !important;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--card-border);
+  transition: background 0.3s ease;
 }
 
 .project-card {

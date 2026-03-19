@@ -82,6 +82,27 @@ const drawer = ref(false);
 
 <style scoped>
 .main-bg {
-  background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%);
+  background: var(--bg-gradient);
+  transition: background 0.3s ease;
+  color: var(--text-primary);
+}
+</style>
+
+<style>
+/* Styles globales pour le mode sombre */
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+#app {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 </style>

@@ -2,7 +2,7 @@ import { ref, watch } from 'vue'
 
 const isDark = ref(false)
 
-// Charger la préférence sauvegardée
+// Charger et appliquer la préférence sauvegardée
 const loadThemePreference = () => {
   const saved = localStorage.getItem('portfolio-theme')
   if (saved) {
@@ -11,22 +11,36 @@ const loadThemePreference = () => {
     // Utiliser la préférence système par défaut
     isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
   }
+  applyTheme()
 }
 
-// Sauvegarder quand le thème change
-const saveThemePreference = () => {
+// Appliquer le thème au DOM
+const applyTheme = () => {
+  const html = document.documentElement
+  if (isDark.value) {
+    html.classList.add('dark-mode')
+    html.classList.remove('light-mode')
+  } else {
+    html.classList.add('light-mode')
+    html.classList.remove('dark-mode')
+  }
   localStorage.setItem('portfolio-theme', isDark.value ? 'dark' : 'light')
 }
 
 export const useTheme = () => {
-  // Charger au premier appel
-  if (!localStorage.getItem('portfolio-theme') && !isDark.value) {
-    loadThemePreference()
-  }
-
   const toggleTheme = () => {
     isDark.value = !isDark.value
-    saveThemePreference()
+    applyTheme()
+  }
+
+  // Watch pour les changements
+  watch(isDark, () => applyTheme())
+
+  // Charger au premier appel
+  if (!localStorage.getItem('portfolio-theme')) {
+    loadThemePreference()
+  } else {
+    applyTheme()
   }
 
   return {
@@ -35,3 +49,4 @@ export const useTheme = () => {
     loadThemePreference
   }
 }
+
