@@ -18,7 +18,20 @@
         </v-btn>
       </div>
 
-      <v-app-bar-nav-icon class="d-md-none" @click="$emit('toggle-drawer')" />
+      <div class="d-flex align-center gap-2">
+        <!-- Theme Toggle Button -->
+        <v-btn
+          icon
+          variant="text"
+          @click="$emit('toggle-theme')"
+          :title="isDark ? 'Mode clair' : 'Mode sombre'"
+        >
+          <v-icon>{{ isDark ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent' }}</v-icon>
+        </v-btn>
+
+        <!-- Mobile Menu Button -->
+        <v-app-bar-nav-icon class="d-md-none" @click="$emit('toggle-drawer')" />
+      </div>
     </v-container>
   </v-app-bar>
 </template>
@@ -35,10 +48,14 @@ defineProps({
   menuItems: {
     type: Array,
     required: true
+  },
+  isDark: {
+    type: Boolean,
+    default: false
   }
 });
 
-const emit = defineEmits(['toggle-drawer']);
+const emit = defineEmits(['toggle-drawer', 'toggle-theme']);
 </script>
 
 
@@ -49,6 +66,12 @@ const emit = defineEmits(['toggle-drawer']);
   background: rgba(255, 255, 255, 0.8) !important;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+:deep(.v-app--dark) .glass-header {
+  background: rgba(30, 30, 30, 0.8) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-btn {
@@ -60,5 +83,9 @@ const emit = defineEmits(['toggle-drawer']);
 
 .nav-btn:hover {
   transform: translateY(-2px);
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 </style>

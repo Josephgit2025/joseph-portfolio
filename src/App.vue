@@ -1,10 +1,12 @@
 <template>
-  <v-app>
+  <v-app :theme="isDark ? 'dark' : 'light'">
     <!-- HEADER -->
     <AppHeader 
       :logo="Log" 
       :menuItems="menuItems" 
-      @toggle-drawer="drawer = !drawer" 
+      @toggle-drawer="drawer = !drawer"
+      @toggle-theme="toggleTheme"
+      :isDark="isDark"
     />
 
     <!-- NAVIGATION DRAWER -->
@@ -42,7 +44,8 @@
 
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useTheme } from "@/composables/useTheme";
 
 // Components
 import AppHeader from "@/components/AppHeader.vue";
@@ -60,6 +63,13 @@ import { menuItems, skills, education, projects } from "@/data/portfolio";
 // Images
 import Log from "@/img/Log.png";
 import Josh from "@/img/Josh.jpg";
+
+// Theme
+const { isDark, toggleTheme, loadThemePreference } = useTheme();
+
+onMounted(() => {
+  loadThemePreference();
+});
 
 // State
 const drawer = ref(false);
