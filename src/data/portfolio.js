@@ -72,5 +72,12 @@ export const projects = [
     link: "https://github.com/Josephgit2025/mlops-spam-detector",
     image: mlopsSpamDetector,
   },
+  {
+    title: "Distributed Voting Application with Docker (POPEYE)",
+    description: "Microservices Architecture: Deployment and orchestration of 5 interconnected services (Python, Node.js, Java) via Docker Compose, with network isolation for security. Container Optimization: Drastic reduction of image size (up to -80%) through Alpine Linux and Multi-stage compilation (Java). Data Infrastructure: Implementation of a robust asynchronous processing pipeline using Redis (message queue) and PostgreSQL (persistence) with volume management.",
+    date: "Dec 2025",
+    techs: ["Docker", "Docker Compose", "Python", "Node.js", "Java", "Redis", "PostgreSQL"],
+    link: "https://github.com/Josephgit2025/Distributed-Voting-Application",
+  },
 
 ];
