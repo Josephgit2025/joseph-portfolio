@@ -3,6 +3,7 @@ import zapier from "@/img/zapier.jpeg";
 import pre_msc from "@/img/pre_msc.png";
 import jenkins from "@/img/jenkins.png";
 import mlopsSpamDetector from "@/img/mlops.svg";
+import popeye from "@/img/popeye.svg";
 
 export const menuItems = [
   { text: "Home", href: "#home" },
@@ -78,6 +79,7 @@ export const projects = [
     date: "Dec 2025",
     techs: ["Docker", "Docker Compose", "Python", "Node.js", "Java", "Redis", "PostgreSQL"],
     link: "https://github.com/Josephgit2025/Distributed-Voting-Application",
+    image: popeye,
   },
 
 ];

@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9800;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E65100;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#f5f5f5"/>
+
+  <!-- Title -->
+  <text x="600" y="40" font-size="32" font-weight="bold" text-anchor="middle" fill="#333">
+    POPEYE: Distributed Voting Architecture
+  </text>
+
+  <!-- Docker Compose Container Border -->
+  <rect x="50" y="80" width="1100" height="580" fill="none" stroke="#2196F3" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
+  <text x="70" y="105" font-size="14" font-weight="bold" fill="#2196F3">Docker Compose Orchestration</text>
+
+  <!-- Service 1: Python Vote Service -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="150" width="160" height="140" fill="url(#grad1)" rx="8"/>
+    <text x="160" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Python</text>
+    <text x="160" y="202" font-size="12" text-anchor="middle" fill="white">Vote Service</text>
+    <circle cx="160" cy="240" r="8" fill="white"/>
+    <text x="160" y="260" font-size="11" text-anchor="middle" fill="white">Port: 5000</text>
+  </g>
+
+  <!-- Service 2: Node.js API -->
+  <g filter="url(#shadow)">
+    <rect x="280" y="150" width="160" height="140" fill="url(#grad1)" rx="8"/>
+    <text x="360" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Node.js</text>
+    <text x="360" y="202" font-size="12" text-anchor="middle" fill="white">API Gateway</text>
+    <circle cx="360" cy="240" r="8" fill="white"/>
+    <text x="360" y="260" font-size="11" text-anchor="middle" fill="white">Port: 3000</text>
+  </g>
+
+  <!-- Service 3: Java Service -->
+  <g filter="url(#shadow)">
+    <rect x="480" y="150" width="160" height="140" fill="url(#grad1)" rx="8"/>
+    <text x="560" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Java</text>
+    <text x="560" y="202" font-size="12" text-anchor="middle" fill="white">Processing</text>
+    <circle cx="560" cy="240" r="8" fill="white"/>
+    <text x="560" y="260" font-size="11" text-anchor="middle" fill="white">Port: 8080</text>
+  </g>
+
+  <!-- Service 4: Frontend -->
+  <g filter="url(#shadow)">
+    <rect x="680" y="150" width="160" height="140" fill="url(#grad1)" rx="8"/>
+    <text x="760" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Frontend</text>
+    <text x="760" y="202" font-size="12" text-anchor="middle" fill="white">Web UI</text>
+    <circle cx="760" cy="240" r="8" fill="white"/>
+    <text x="760" y="260" font-size="11" text-anchor="middle" fill="white">Port: 80</text>
+  </g>
+
+  <!-- Service 5: Worker Service -->
+  <g filter="url(#shadow)">
+    <rect x="880" y="150" width="160" height="140" fill="url(#grad1)" rx="8"/>
+    <text x="960" y="180" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Worker</text>
+    <text x="960" y="202" font-size="12" text-anchor="middle" fill="white">Async Tasks</text>
+    <circle cx="960" cy="240" r="8" fill="white"/>
+    <text x="960" y="260" font-size="11" text-anchor="middle" fill="white">Background</text>
+  </g>
+
+  <!-- Redis Cache -->
+  <g filter="url(#shadow)">
+    <rect x="150" y="380" width="180" height="130" fill="url(#grad2)" rx="8"/>
+    <text x="240" y="410" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Redis</text>
+    <text x="240" y="432" font-size="12" text-anchor="middle" fill="white">Message Queue</text>
+    <text x="240" y="454" font-size="11" text-anchor="middle" fill="white">• Async Processing</text>
+    <text x="240" y="474" font-size="11" text-anchor="middle" fill="white">• Caching Layer</text>
+  </g>
+
+  <!-- PostgreSQL Database -->
+  <g filter="url(#shadow)">
+    <rect x="420" y="380" width="180" height="130" fill="url(#grad2)" rx="8"/>
+    <text x="510" y="410" font-size="14" font-weight="bold" text-anchor="middle" fill="white">PostgreSQL</text>
+    <text x="510" y="432" font-size="12" text-anchor="middle" fill="white">Data Persistence</text>
+    <text x="510" y="454" font-size="11" text-anchor="middle" fill="white">• Votes Storage</text>
+    <text x="510" y="474" font-size="11" text-anchor="middle" fill="white">• User Data</text>
+  </g>
+
+  <!-- Alpine Linux Optimization -->
+  <g filter="url(#shadow)">
+    <rect x="690" y="380" width="180" height="130" fill="url(#grad3)" rx="8"/>
+    <text x="780" y="410" font-size="14" font-weight="bold" text-anchor="middle" fill="white">Optimization</text>
+    <text x="780" y="432" font-size="12" text-anchor="middle" fill="white">Multi-stage Build</text>
+    <text x="780" y="454" font-size="11" text-anchor="middle" fill="white">• Alpine Linux</text>
+    <text x="780" y="474" font-size="11" text-anchor="middle" fill="white">• -80% Size Reduction</text>
+  </g>
+
+  <!-- Network Isolation -->
+  <g filter="url(#shadow)">
+    <rect x="960" y="380" width="130" height="130" fill="url(#grad3)" rx="8"/>
+    <text x="1025" y="410" font-size="13" font-weight="bold" text-anchor="middle" fill="white">Security</text>
+    <text x="1025" y="432" font-size="11" text-anchor="middle" fill="white">Network</text>
+    <text x="1025" y="452" font-size="11" text-anchor="middle" fill="white">Isolation</text>
+    <text x="1025" y="472" font-size="11" text-anchor="middle" fill="white">Firewall</text>
+  </g>
+
+  <!-- Arrows/Connections -->
+  <!-- Services to Redis -->
+  <line x1="160" y1="290" x2="240" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="360" y1="290" x2="280" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="560" y1="290" x2="480" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Services to PostgreSQL -->
+  <line x1="760" y1="290" x2="520" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="960" y1="290" x2="580" y2="380" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Stats/Info Box -->
+  <rect x="80" y="570" width="1040" height="70" fill="white" stroke="#ccc" stroke-width="1" rx="5"/>
+  <text x="100" y="595" font-size="12" font-weight="bold" fill="#333">Key Features:</text>
+  <text x="100" y="615" font-size="11" fill="#666">✓ 5 Interconnected Microservices  |  ✓ Async Processing Pipeline  |  ✓ Secure Network Isolation  |  ✓ Container Optimization  |  ✓ Volume Management</text>
+</svg>
