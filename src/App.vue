@@ -62,7 +62,7 @@ import { menuItems, skills, education, projects } from "@/data/portfolio";
 
 // Images
 import Log from "@/img/Log.png";
-import Josh from "@/img/Josh.jpg";
+import Josh from "@/img/Josh.JPG";
 
 // Theme
 const { isDark, toggleTheme, loadThemePreference } = useTheme();
