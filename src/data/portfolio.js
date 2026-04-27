@@ -59,7 +59,7 @@ export const projects = [
     {
     title: "Jenkins CI/CD Automation",
     description: "Complete automation of a Jenkins instance without manual configuration. Technologies: Jenkins, YAML (JCasC), Groovy (DSL Job), Docker. Achievements:Declarative configuration of Jenkins via Configuration as Code. Authentication system with 4 users and secure password management via environment variables. Role-based authorization strategy with 4 roles with granular permissions. SEED Job dynamically generating CI/CD pipelines for any GitHub project. SCM integration with automatic polling to trigger builds.",
-    date: "Dev 2025",
+    date: "Dec 2025",
     techs: ["Jenkins", "Docker", "YAML", "Groovy"],
     link: "https://github.com/EpitechMscProPromo2028/T-DOP-502-NAN_13.git",
     image: jenkins,
@@ -67,7 +67,7 @@ export const projects = [
   {
     title: "MLOps Spam Detector",
     description: "Pipeline MLOps complet de détection de SMS spam. Modèle Naive Bayes (Scikit-learn) avec ~97% de précision, exposé via une API FastAPI, containerisé avec Docker, pipeline CI/CD sur Drone CI, tracking des expériences avec MLflow.",
-    date: "2025",
+    date: "Apr 2026",
     techs: ["Python", "Scikit-learn", "FastAPI", "Docker", "Drone CI", "MLflow"],
     link: "https://github.com/Josephgit2025/mlops-spam-detector",
     image: mlopsSpamDetector,
