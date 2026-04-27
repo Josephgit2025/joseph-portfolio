@@ -14,7 +14,7 @@ const loadThemePreference = () => {
   applyTheme()
 }
 
-// Appliquer le thème au DOM
+// Appliquer le thème au DOM et à Vuetify
 const applyTheme = () => {
   const html = document.documentElement
   if (isDark.value) {
@@ -25,23 +25,19 @@ const applyTheme = () => {
     html.classList.remove('dark-mode')
   }
   localStorage.setItem('portfolio-theme', isDark.value ? 'dark' : 'light')
+  // Forcer le re-render de Vue
+  if (html.style) {
+    html.style.colorScheme = isDark.value ? 'dark' : 'light'
+  }
 }
 
 export const useTheme = () => {
   const toggleTheme = () => {
     isDark.value = !isDark.value
-    applyTheme()
   }
 
-  // Watch pour les changements
-  watch(isDark, () => applyTheme())
-
-  // Charger au premier appel
-  if (!localStorage.getItem('portfolio-theme')) {
-    loadThemePreference()
-  } else {
-    applyTheme()
-  }
+  // Watch pour les changements - applique le thème quand isDark change
+  watch(isDark, () => applyTheme(), { immediate: true })
 
   return {
     isDark,

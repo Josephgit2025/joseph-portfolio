@@ -2,6 +2,7 @@ import jobdeed from "@/img/jobdeed.jpg";
 import zapier from "@/img/zapier.jpeg";
 import pre_msc from "@/img/pre_msc.png";
 import jenkins from "@/img/jenkins.png";
+import mlopsSpamDetector from "@/img/mlops.svg";
 
 export const menuItems = [
   { text: "Home", href: "#home" },
@@ -18,8 +19,10 @@ export const skills = [
   { name: "Vuetify", level: "UI Framework", icon: "mdi-vuetify", color: "#1867C0" },
   { name: "HTML", level: "Frontend Development", icon: "mdi-language-html5", color: "#E34F26" },
   { name: "Docker", level: "Containerization", icon: "mdi-docker", color: "#1572B6" },
-  { name: "Jenkins", level: "CI/CD", icon: "mdi-jenkins", color: "#D24939" },
-  {name: "Python", level: "Scripting and Automation", icon: "mdi-language-python", color: "#dbd53a"},  
+  { name: "Python", level: "Scripting and Automation", icon: "mdi-language-python", color: "#dbd53a" },
+  { name: "CI/CD", level: "Continuous Integration/Deployment", icon: "mdi-git", color: "#00e5a0" },
+  { name: "Terraform", level: "Infrastructure as Code", icon: "mdi-cloud-upload", color: "#7B42BC" },
+  { name: "Ansible", level: "Configuration Management", icon: "mdi-wrench", color: "#EE0000" },
 ];
 
 export const education = [
@@ -60,6 +63,14 @@ export const projects = [
     techs: ["Jenkins", "Docker", "YAML", "Groovy"],
     link: "https://github.com/EpitechMscProPromo2028/T-DOP-502-NAN_13.git",
     image: jenkins,
+  },
+  {
+    title: "MLOps Spam Detector",
+    description: "Pipeline MLOps complet de détection de SMS spam. Modèle Naive Bayes (Scikit-learn) avec ~97% de précision, exposé via une API FastAPI, containerisé avec Docker, pipeline CI/CD sur Drone CI, tracking des expériences avec MLflow.",
+    date: "2025",
+    techs: ["Python", "Scikit-learn", "FastAPI", "Docker", "Drone CI", "MLflow"],
+    link: "https://github.com/Josephgit2025/mlops-spam-detector",
+    image: mlopsSpamDetector,
   },
 
 ];

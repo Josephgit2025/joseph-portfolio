@@ -89,6 +89,9 @@ const drawer = ref(false);
 </style>
 
 <style>
+* { font-family: 'DM Sans', sans-serif; }
+h1, h2, h3, .home-title, .section-title { font-family: 'Syne', sans-serif; }
+
 /* Styles globales pour le mode sombre */
 html {
   background-color: var(--bg-primary);
@@ -104,5 +107,71 @@ body {
 #app {
   background-color: var(--bg-primary);
   color: var(--text-primary);
+}
+
+/* Styles light-mode pour toute la page */
+.light-mode {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.light-mode * {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .main-bg {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.light-mode .glass-card {
+  background: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+  color: var(--text-primary) !important;
+}
+
+.light-mode .skills-card {
+  background: rgba(0, 179, 122, 0.05) !important;
+}
+
+.light-mode .v-card {
+  background: var(--card-bg) !important;
+  color: var(--text-primary) !important;
+}
+
+.light-mode .v-btn {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .v-text-field {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .v-textarea {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .section-title {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .home-title {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .home-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+.light-mode .home-description {
+  color: var(--text-tertiary) !important;
+}
+
+.light-mode .about-text {
+  color: var(--text-secondary) !important;
+}
+
+.light-mode .stat-label {
+  color: var(--text-tertiary) !important;
 }
 </style>

@@ -115,7 +115,7 @@ defineProps({
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(102, 126, 234, 0.9);
+  background: rgba(0, 229, 160, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;

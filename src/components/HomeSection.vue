@@ -14,11 +14,6 @@
           Computer Science Student at EPITECH Nantes
         </h2>
         
-        <p class="home-description mb-8">
-          Passionate about cybersecurity and artificial intelligence, 
-          creating efficient and automated technological solutions.
-        </p>
-        
         <div class="home-actions">
           <v-btn 
             color="primary" 
@@ -128,7 +123,7 @@ defineProps({
 }
 
 .accent-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(90deg, #00e5a0, #00ffb3);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -153,8 +148,9 @@ defineProps({
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  background: #00e5a0 !important;
+  color: #0a0a0a !important;
+  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.35);
   transition: all 0.3s ease;
 }
 
@@ -194,7 +190,7 @@ defineProps({
   position: absolute;
   width: 400px;
   height: 400px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #00e5a0;
   border-radius: 50%;
   opacity: 0.1;
   top: 50%;
@@ -217,7 +213,7 @@ defineProps({
 
 .profile-card:hover {
   transform: scale(1.05) rotate(2deg);
-  box-shadow: 0 25px 70px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 25px 70px rgba(0, 229, 160, 0.25);
 }
 
 .scroll-indicator {
@@ -230,7 +226,7 @@ defineProps({
 
 .scroll-arrow {
   font-size: 2rem;
-  color: #667eea;
+  color: #00e5a0;
 }
 
 @keyframes fadeInUp {

@@ -9,15 +9,11 @@
       <v-row>
         <v-col cols="12" md="7">
           <p class="about-text">
-            Student in Computer Science at <strong>EPITECH Nantes (BAC+5)</strong>, passionate about
-            cybersecurity and artificial intelligence.
+            <strong>Hi, I'm Joseph-Marie Bilé</strong><br>
+            MSc Student in Information Systems Architecture at EPITECH Nantes
           </p>
           <p class="about-text">
-            I am looking for an <strong>internship / work-study</strong> starting from January 2026 in order
-            to develop my skills and create efficient and automated technological solutions.
-          </p>
-          <p class="about-text">
-            My work method is based on <strong>analysis, research, and curiosity</strong>.
+            I build <strong>automated, containerized solutions</strong> — Passionate about <strong>DevOps, AI and backend development</strong>, I'm looking for a <strong>2-year work-study contract starting September 2026</strong>.
           </p>
 
           <!-- Stats -->
@@ -113,20 +109,20 @@ defineProps({
 .stat-box {
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  background: rgba(0, 229, 160, 0.05);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .stat-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 229, 160, 0.15);
 }
 
 .stat-number {
   font-size: 2.5rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #00e5a0 0%, #00ffb3 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

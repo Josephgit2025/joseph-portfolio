@@ -17,11 +17,11 @@ const vuetify = createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: 'light',
+    defaultTheme: 'dark',
     themes: {
       light: {
         colors: {
-          primary: '#667eea',
+          primary: '#00e5a0',
           secondary: '#764ba2',
           background: '#f5f5f5',
           surface: '#ffffff',
@@ -29,10 +29,10 @@ const vuetify = createVuetify({
       },
       dark: {
         colors: {
-          primary: '#667eea',
+          primary: '#00e5a0',
           secondary: '#764ba2',
-          background: '#0f0f0f',
-          surface: '#1a1a1a',
+          background: '#0a0a0a',
+          surface: '#111111',
         }
       }
     }
