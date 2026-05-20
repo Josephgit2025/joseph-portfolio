@@ -1,9 +1,9 @@
-import jobdeed from "@/img/jobdeed.jpg";
 import zapier from "@/img/zapier.jpeg";
 import pre_msc from "@/img/pre_msc.png";
 import jenkins from "@/img/jenkins.png";
 import mlopsSpamDetector from "@/img/mlops.svg";
 import popeye from "@/img/popeye.svg";
+import coral from "@/img/coral.png";
 
 export const menuItems = [
   { text: "Home", href: "#home" },
@@ -42,14 +42,6 @@ export const projects = [
     image: zapier,
   },
   {
-    title: "Job Web Platform",
-    description: "Full-stack job-matching platform for recruiters and candidates.",
-    date: "Sep 2025",
-    techs: ["Vue.js", "Node.js", "Express", "MariaDB"],
-    link: "https://github.com/EpitechMscProPromo2028/T-WEB-501-NAN_5.git",
-    image: jobdeed,
-  },
-  {
     title: "2D video game project with Java",
     description: "A defense where a hero fights zombies to protect his base. Real-time combat system with 5 upgradable weapons, unit shop, gold economy, multidirectional animations and customized UI. MVC architecture with unit tests.",
     date: "Nov 2025",
@@ -57,7 +49,7 @@ export const projects = [
     link: "https://github.com/Josephgit2025/Jeu-Video-2D-Java-LibGDX.git",
     image: pre_msc,
   },
-    {
+  {
     title: "Jenkins CI/CD Automation",
     description: "Complete automation of a Jenkins instance without manual configuration. Technologies: Jenkins, YAML (JCasC), Groovy (DSL Job), Docker. Achievements:Declarative configuration of Jenkins via Configuration as Code. Authentication system with 4 users and secure password management via environment variables. Role-based authorization strategy with 4 roles with granular permissions. SEED Job dynamically generating CI/CD pipelines for any GitHub project. SCM integration with automatic polling to trigger builds.",
     date: "Dec 2025",
@@ -80,6 +72,20 @@ export const projects = [
     techs: ["Docker", "Docker Compose", "Python", "Node.js", "Java", "Redis", "PostgreSQL"],
     link: "https://github.com/Josephgit2025/Distributed-Voting-Application.git",
     image: popeye,
+  },
+  {
+    title: "CORAL - Real-Time Communication Platform",
+    description: "Coral is a full-stack real-time communication application built with modern technologies across web and desktop platforms. It demonstrates proficiency in building scalable, multi-platform applications with real-time functionality, similar to Discord.",
+    date: "Mar 2026 - Apr 2026",
+    techs: [
+      "Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS",
+      "Backend: Rust, Axum, Sea-ORM, WebSocket",
+      "Desktop: Tauri 2",
+      "Database: PostgreSQL 16",
+      "DevOps: Docker, Docker Compose"
+    ],
+    link: "https://github.com/Josephgit2025/CORAL-APPLICATION-RTC.git",
+    image: coral,
   },
 
 ];
