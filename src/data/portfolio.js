@@ -54,7 +54,7 @@ export const projects = [
     description: "A defense where a hero fights zombies to protect his base. Real-time combat system with 5 upgradable weapons, unit shop, gold economy, multidirectional animations and customized UI. MVC architecture with unit tests.",
     date: "Nov 2025",
     techs: ["Java", "LibGDX", "Gradle", "JUnit"],
-    link: "https://github.com/EpitechMscProPromo2028/T-JAV-501-NAN_2.git",
+    link: "https://github.com/Josephgit2025/Jeu-Video-2D-Java-LibGDX.git",
     image: pre_msc,
   },
     {
@@ -70,7 +70,7 @@ export const projects = [
     description: "Pipeline MLOps complet de détection de SMS spam. Modèle Naive Bayes (Scikit-learn) avec ~97% de précision, exposé via une API FastAPI, containerisé avec Docker, pipeline CI/CD sur Drone CI, tracking des expériences avec MLflow.",
     date: "Apr 2026",
     techs: ["Python", "Scikit-learn", "FastAPI", "Docker", "Drone CI", "MLflow"],
-    link: "https://github.com/Josephgit2025/mlops-spam-detector",
+    link: "https://github.com/Josephgit2025/mlops-spam-detector.git",
     image: mlopsSpamDetector,
   },
   {
@@ -78,7 +78,7 @@ export const projects = [
     description: "Microservices Architecture: Deployment and orchestration of 5 interconnected services (Python, Node.js, Java) via Docker Compose, with network isolation for security. Container Optimization: Drastic reduction of image size (up to -80%) through Alpine Linux and Multi-stage compilation (Java). Data Infrastructure: Implementation of a robust asynchronous processing pipeline using Redis (message queue) and PostgreSQL (persistence) with volume management.",
     date: "Dec 2025",
     techs: ["Docker", "Docker Compose", "Python", "Node.js", "Java", "Redis", "PostgreSQL"],
-    link: "https://github.com/Josephgit2025/Distributed-Voting-Application",
+    link: "https://github.com/Josephgit2025/Distributed-Voting-Application.git",
     image: popeye,
   },
 
