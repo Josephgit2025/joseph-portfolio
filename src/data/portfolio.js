@@ -4,6 +4,8 @@ import jenkins from "@/img/jenkins.png";
 import mlopsSpamDetector from "@/img/mlops.svg";
 import popeye from "@/img/popeye.svg";
 import coral from "@/img/coral.png";
+import bernstein from "@/img/bernstein.png";
+import { IconValue } from "vuetify/lib/composables/icons.mjs";
 
 export const menuItems = [
   { text: "Home", href: "#home" },
@@ -58,10 +60,19 @@ export const projects = [
     image: jenkins,
   },
   {
-    title: "MLOps Spam Detector",
-    description: "Pipeline MLOps complet de détection de SMS spam. Modèle Naive Bayes (Scikit-learn) avec ~97% de précision, exposé via une API FastAPI, containerisé avec Docker, pipeline CI/CD sur Drone CI, tracking des expériences avec MLflow.",
+    title: "MLOps Spam Detector — Cloud DevOps",
+    description: "This project combines Machine Learning and DevOps to deploy a SMS spam detection model in real production on DigitalOcean cloud. The goal: fully automate the model lifecycle — from training to deployment — with a reproducible infrastructure and multi-source CI/CD pipelines.",
     date: "Apr 2026",
-    techs: ["Python", "Scikit-learn", "FastAPI", "Docker", "Drone CI", "MLflow"],
+    techs: [
+      "ML / NLP : Python, Scikit-learn, MLflow",
+      "API : FastAPI",
+      "Containerization : Docker",
+      "IaC : Terraform, Ansible(Vault AES256)",
+      "Orchestration : Kubernetes(DOKS)",
+      "CI/CD : GitHub Actions, GitLabCI, DroneCI, ArgoCD",
+      "Cloud : DigitalOcean (DOKS · Droplet · PostgreSQL · Load Balancer)",
+      "Database : PostgreSQL, Redis",
+    ],
     link: "https://github.com/Josephgit2025/mlops-spam-detector.git",
     image: mlopsSpamDetector,
   },
@@ -86,6 +97,22 @@ export const projects = [
     ],
     link: "https://github.com/Josephgit2025/CORAL-APPLICATION-RTC.git",
     image: coral,
+  },
+  {
+    title: "Bernstein — Containers Symphony Orchestration",
+    description: "This project is part of the Epitech MSc curriculum (T-DOP-603) and focuses on container orchestration with Kubernetes. The goal: deploy a distributed web poll application on a real multi-node Kubernetes cluster hosted on DigitalOcean, using industry-standard DevOps tools and practices — Traefik for routing, ArgoCD for GitOps, Terraform for infrastructure provisioning, and Ansible for automation.",
+    date: "Jun 2026",
+    techs: [
+      "Languages: Python (Flask) · Java (Maven) · Node.js",
+      "Storage: PostgreSQL 9.6 · Redis 5.0",
+      "Containerization: Docker",
+      "Orchestration: Kubernetes (DOKS), ArgoCD",
+      "IaC: Terraform, Ansible",
+      "Cloud: DigitalOcean DigitalOcean (DOKS · Block Storage · Load Balancer)",
+      "CI/CD: GitHub Actions, GitOps (ArgoCD)",
+    ],
+    link: "https://github.com/Josephgit2025/bernstein.git",
+    image: bernstein,
   },
 
 ];
