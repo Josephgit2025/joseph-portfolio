@@ -1,42 +1,51 @@
-// main.js
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// Vuetify
+// Vuetify (components are auto-imported by vite-plugin-vuetify)
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-import '@mdi/font/css/materialdesignicons.css'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
 
-// Global Styles
-import '@/assets/animations.css'
 import '@/assets/main.css'
+import { vReveal } from '@/directives/reveal'
 
 const vuetify = createVuetify({
-  components,
-  directives,
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: { mdi },
+  },
   theme: {
     defaultTheme: 'dark',
     themes: {
-      light: {
-        colors: {
-          primary: '#00e5a0',
-          secondary: '#764ba2',
-          background: '#f5f5f5',
-          surface: '#ffffff',
-        }
-      },
       dark: {
+        dark: true,
         colors: {
+          background: '#0a0b0d',
+          surface: '#121417',
           primary: '#00e5a0',
-          secondary: '#764ba2',
-          background: '#0a0a0a',
-          surface: '#111111',
-        }
-      }
-    }
-  }
+          'on-primary': '#03140d',
+          secondary: '#7f8783',
+          success: '#00e5a0',
+          info: '#5cc8ff',
+          error: '#ff6b6b',
+        },
+      },
+      light: {
+        dark: false,
+        colors: {
+          background: '#f6f7f4',
+          surface: '#ffffff',
+          primary: '#00875c',
+          'on-primary': '#ffffff',
+          secondary: '#66706b',
+          success: '#00875c',
+          info: '#0b6fa4',
+          error: '#c62828',
+        },
+      },
+    },
+  },
 })
 
-createApp(App).use(vuetify).mount('#app')
+createApp(App).use(vuetify).directive('reveal', vReveal).mount('#app')

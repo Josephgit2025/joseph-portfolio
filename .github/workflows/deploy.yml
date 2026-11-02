@@ -29,6 +29,13 @@ jobs:
       
     - name: Build
       run: npm run build
+      env:
+        # Optional: set these in Settings → Secrets and variables → Actions → Variables
+        # to send the contact form through EmailJS. Without them the form opens the
+        # visitor's email app instead.
+        VITE_EMAILJS_SERVICE_ID: ${{ vars.EMAILJS_SERVICE_ID }}
+        VITE_EMAILJS_TEMPLATE_ID: ${{ vars.EMAILJS_TEMPLATE_ID }}
+        VITE_EMAILJS_PUBLIC_KEY: ${{ vars.EMAILJS_PUBLIC_KEY }}
       
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

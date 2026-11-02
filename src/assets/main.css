@@ -1,0 +1,367 @@
+/* ==========================================================================
+   Design tokens: the single source of truth for both themes
+   ========================================================================== */
+:root {
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --container: 1180px;
+  --header-h: 72px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Dark theme (default) */
+  --bg: #0a0b0d;
+  --bg-soft: #0e1012;
+  --surface: #121417;
+  --surface-2: #181b1f;
+  --surface-glass: rgba(18, 20, 23, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text: #f3f5f4;
+  --text-muted: #a6aeaa;
+  --text-subtle: #7f8783;
+  --accent: #00e5a0;
+  --accent-strong: #3dffc5;
+  --accent-text: #00e5a0;
+  --accent-soft: rgba(0, 229, 160, 0.1);
+  --accent-border: rgba(0, 229, 160, 0.35);
+  --accent-glow: rgba(0, 229, 160, 0.32);
+  --on-accent: #03140d;
+  --header-bg: rgba(10, 11, 13, 0.7);
+  --grid-line: rgba(255, 255, 255, 0.05);
+  --shadow-lg: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+  color-scheme: dark;
+}
+
+:root.light-mode {
+  --bg: #f6f7f4;
+  --bg-soft: #eef1ec;
+  --surface: #ffffff;
+  --surface-2: #f1f4f0;
+  --surface-glass: rgba(255, 255, 255, 0.8);
+  --border: rgba(12, 20, 16, 0.09);
+  --border-strong: rgba(12, 20, 16, 0.18);
+  --text: #0c110f;
+  --text-muted: #48514c;
+  --text-subtle: #616b66;
+  --accent: #00b37a;
+  --accent-strong: #00c98a;
+  --accent-text: #00774f;
+  --accent-soft: rgba(0, 179, 122, 0.1);
+  --accent-border: rgba(0, 150, 100, 0.35);
+  --accent-glow: rgba(0, 179, 122, 0.28);
+  --on-accent: #03140d;
+  --header-bg: rgba(246, 247, 244, 0.78);
+  --grid-line: rgba(12, 20, 16, 0.06);
+  --shadow-lg: 0 30px 60px -30px rgba(20, 40, 30, 0.25);
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.v-application {
+  font-family: var(--font-body) !important;
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(72px, 9.5vw, 120px);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  height: 50px;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, background-color 0.25s ease,
+    border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn .v-icon {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.btn:hover .icon-nudge {
+  transform: translateX(3px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 10px 30px -12px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  background: var(--accent-strong);
+  box-shadow: 0 16px 36px -12px var(--accent-glow);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent-border);
+  color: var(--accent-text);
+  background: var(--accent-soft);
+}
+
+.btn-sm {
+  height: 40px;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s var(--ease-out), color 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: var(--accent-text);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Small UI pieces
+   ========================================================================== */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.42rem 0.6rem;
+  border-radius: 7px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* ==========================================================================
+   Reveal on scroll (see src/directives/reveal.js)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   Vuetify fine-tuning
+   ========================================================================== */
+.v-btn {
+  text-transform: none !important;
+  letter-spacing: 0.005em !important;
+}
+
+.v-field {
+  border-radius: 14px !important;
+}
+
+.v-field-label,
+.v-field__input,
+.v-messages__message {
+  font-family: var(--font-body) !important;
+}
+
+.v-overlay__scrim {
+  background: rgb(5, 7, 6) !important;
+}
+
+.v-overlay--active > .v-overlay__scrim {
+  opacity: 0.72 !important;
+}
+
+/* ==========================================================================
+   Motion preferences
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,151 +1,169 @@
 <template>
-  <v-container id="projects" class="section-spacing fade-in">
-    <v-card flat class="glass-card pa-8 rounded-xl" elevation="0">
-      <h3 class="section-title">
-        <v-icon color="primary" class="mr-3">mdi-rocket-launch</v-icon>
-        Projects
-      </h3>
-      
-      <v-row>
-        <v-col 
-          v-for="(project, index) in projects" 
-          :key="index" 
-          cols="12" 
-          sm="6" 
-          md="4"
-        >
-          <v-hover v-slot="{ isHovering, props }">
-            <v-card 
-              v-bind="props" 
-              :elevation="isHovering ? 12 : 4"
-              class="project-card rounded-xl h-100"
-            >
-              <div class="project-image-wrapper">
-                <v-img :src="project.image" height="220px" cover />
-                <div class="project-overlay" :class="{ 'active': isHovering }">
-                  <v-btn 
-                    icon 
-                    size="large" 
-                    color="white" 
-                    :href="project.link" 
-                    target="_blank"
-                  >
-                    <v-icon>mdi-arrow-right</v-icon>
-                  </v-btn>
-                </div>
-              </div>
-              
-              <v-card-text class="pa-5">
-                <v-card-title class="pa-0 mb-2 text-h6">{{ project.title }}</v-card-title>
-                <p class="text-body-2 mb-3">{{ project.description }}</p>
-                
-                <v-chip size="x-small" variant="tonal" color="primary" class="mr-1">
-                  <v-icon start size="x-small">mdi-calendar</v-icon>
-                  {{ project.date }}
-                </v-chip>
-                
-                <div class="mt-3">
-                  <v-chip 
-                    v-for="tech in project.techs" 
-                    :key="tech" 
-                    size="x-small" 
-                    class="mr-1 mb-1" 
-                    variant="outlined"
-                  >
-                    {{ tech }}
-                  </v-chip>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-hover>
-        </v-col>
-      </v-row>
-    </v-card>
-  </v-container>
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="projects-head">
+        <SectionHeading
+          index="03"
+          eyebrow="Projects"
+          title="Selected work."
+          subtitle="Clusters, pipelines and applications I've designed and built, most recent first."
+        />
+
+        <div class="filters" role="group" aria-label="Filter projects by category" v-reveal="100">
+          <button
+            v-for="f in filters"
+            :key="f.key"
+            type="button"
+            class="filter"
+            :class="{ active: current === f.key }"
+            :aria-pressed="current === f.key"
+            @click="current = f.key"
+          >
+            {{ f.label }}
+            <span class="filter-count">{{ f.count }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <ProjectCard
+          v-for="(project, i) in visible"
+          :key="project.title"
+          v-reveal="(i % 3) * 90"
+          :project="project"
+          :featured="project.featured"
+          @open="openProject"
+        />
+      </div>
+    </div>
+
+    <ProjectDialog v-model="dialogOpen" :project="selected" />
+  </section>
 </template>
 
 <script setup>
-defineProps({
-  projects: {
-    type: Array,
-    required: true
-  }
-});
+import { computed, ref } from "vue";
+import SectionHeading from "@/components/SectionHeading.vue";
+import ProjectCard from "@/components/ProjectCard.vue";
+import ProjectDialog from "@/components/ProjectDialog.vue";
+import { projects, projectCategories } from "@/data/portfolio";
+
+// Featured first, then most recent first
+const sorted = [...projects].sort(
+  (a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || b.sortKey.localeCompare(a.sortKey)
+);
+
+const filters = [
+  { key: "all", label: "All", count: projects.length },
+  ...Object.entries(projectCategories).map(([key, label]) => ({
+    key,
+    label,
+    count: projects.filter((p) => p.categories.includes(key)).length,
+  })),
+];
+
+const current = ref("all");
+const visible = computed(() =>
+  current.value === "all" ? sorted : sorted.filter((p) => p.categories.includes(current.value))
+);
+
+const selected = ref(null);
+const dialogOpen = ref(false);
+const openProject = (project) => {
+  selected.value = project;
+  dialogOpen.value = true;
+};
 </script>
 
 <style scoped>
-.section-spacing {
-  padding: 80px 0;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 40px;
-  text-align: center;
-  color: var(--text-primary);
-}
-
-.glass-card {
-  background: var(--card-bg) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--card-border);
-  transition: background 0.3s ease;
-}
-
-.project-card {
-  transition: all 0.4s ease;
-  overflow: hidden;
+.projects-head {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0 2rem;
 }
 
-.project-card:hover {
-  transform: translateY(-10px);
-}
-
-.project-image-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-.project-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 229, 160, 0.85);
+.filters {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.filter {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: all 0.3s ease;
+  gap: 0.5rem;
+  height: 40px;
+  padding: 0 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.project-overlay.active {
-  opacity: 1;
+.filter:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
 }
 
-.fade-in {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
+.filter.active {
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+.filter-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text-subtle);
+}
+
+.filter.active .filter-count {
+  background: rgba(3, 20, 13, 0.14);
+  color: var(--on-accent);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-@media (max-width: 960px) {
-  .section-title {
-    font-size: 2rem;
+@media (max-width: 639px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(-1 * clamp(16px, 4vw, 32px));
+    padding-inline: clamp(16px, 4vw, 32px);
+    scrollbar-width: none;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter {
+    flex: none;
   }
 }
 </style>
