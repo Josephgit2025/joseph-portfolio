@@ -60,7 +60,7 @@ export const profile = {
 };
 
 export const socials = [
-  { name: "GitHub", label: "github.com/Josephgit2025", href: "https://github.com/Josephgit2025", icon: mdiGithub },
+  { name: "GitHub", label: "github.com/hpesoj69", href: "https://github.com/hpesoj69", icon: mdiGithub },
   { name: "LinkedIn", label: "Joseph-Marie Bilé", href: "https://www.linkedin.com/in/joseph-marie-bilé-283470385", icon: mdiLinkedin },
   { name: "Email", label: profile.email, href: `mailto:${profile.email}`, icon: mdiEmailOutline },
 ];
@@ -175,7 +175,7 @@ export const projects = [
       { label: "Cloud", items: ["DigitalOcean (DOKS · Droplet · PostgreSQL · Load Balancer)"] },
       { label: "Database", items: ["PostgreSQL", "Redis"] },
     ],
-    link: "https://github.com/Josephgit2025/mlops-spam-detector",
+    link: "https://github.com/hpesoj69/mlops-spam-detector",
     image: mlopsSpamDetector,
     imageFit: "cover",
   },
@@ -204,7 +204,7 @@ export const projects = [
       { label: "Cloud", items: ["DigitalOcean (DOKS · Block Storage · Load Balancer)"] },
       { label: "CI/CD", items: ["GitHub Actions", "GitOps (ArgoCD)"] },
     ],
-    link: "https://github.com/Josephgit2025/bernstein",
+    link: "https://github.com/hpesoj69/bernstein",
     image: bernstein,
     imageFit: "cover",
   },
@@ -231,7 +231,7 @@ export const projects = [
       { label: "Database", items: ["PostgreSQL 16"] },
       { label: "DevOps", items: ["Docker", "Docker Compose"] },
     ],
-    link: "https://github.com/Josephgit2025/CORAL-APPLICATION-RTC",
+    link: "https://github.com/hpesoj69/CORAL-APPLICATION-RTC",
     image: coral,
     imageFit: "contain",
   },
@@ -282,7 +282,7 @@ export const projects = [
       { label: "Services", items: ["Python", "Node.js", "Java"] },
       { label: "Data", items: ["Redis", "PostgreSQL"] },
     ],
-    link: "https://github.com/Josephgit2025/Distributed-Voting-Application",
+    link: "https://github.com/hpesoj69/Distributed-Voting-Application",
     image: popeye,
     imageFit: "cover",
   },
@@ -306,7 +306,7 @@ export const projects = [
       { label: "Game", items: ["Java", "LibGDX"] },
       { label: "Build & tests", items: ["Gradle", "JUnit"] },
     ],
-    link: "https://github.com/Josephgit2025/Jeu-Video-2D-Java-LibGDX",
+    link: "https://github.com/hpesoj69/Jeu-Video-2D-Java-LibGDX",
     image: preMsc,
     imageFit: "contain",
   },
