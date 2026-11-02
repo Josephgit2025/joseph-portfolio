@@ -1,48 +1,45 @@
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 
-const isDark = ref(false)
+const STORAGE_KEY = 'portfolio-theme'
+const root = document.documentElement
 
-// Charger et appliquer la préférence sauvegardée
-const loadThemePreference = () => {
-  const saved = localStorage.getItem('portfolio-theme')
-  if (saved) {
-    isDark.value = saved === 'dark'
-  } else {
-    // Utiliser la préférence système par défaut
-    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-  applyTheme()
+// index.html already applied the saved (or system) theme before first paint
+const isDark = ref(!root.classList.contains('light-mode'))
+
+const applyTheme = (dark) => {
+  root.classList.toggle('dark-mode', dark)
+  root.classList.toggle('light-mode', !dark)
+  root.style.colorScheme = dark ? 'dark' : 'light'
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0a0b0d' : '#f6f7f4')
 }
 
-// Appliquer le thème au DOM et à Vuetify
-const applyTheme = () => {
-  const html = document.documentElement
-  if (isDark.value) {
-    html.classList.add('dark-mode')
-    html.classList.remove('light-mode')
-  } else {
-    html.classList.add('light-mode')
-    html.classList.remove('dark-mode')
-  }
-  localStorage.setItem('portfolio-theme', isDark.value ? 'dark' : 'light')
-  // Forcer le re-render de Vue
-  if (html.style) {
-    html.style.colorScheme = isDark.value ? 'dark' : 'light'
+const readSaved = () => {
+  try {
+    return localStorage.getItem(STORAGE_KEY)
+  } catch {
+    return null
   }
 }
+
+// Follow system changes as long as the visitor hasn't picked a theme
+window.matchMedia?.('(prefers-color-scheme: light)').addEventListener?.('change', (e) => {
+  if (readSaved()) return
+  isDark.value = !e.matches
+  applyTheme(isDark.value)
+})
+
+applyTheme(isDark.value)
 
 export const useTheme = () => {
   const toggleTheme = () => {
     isDark.value = !isDark.value
+    applyTheme(isDark.value)
+    try {
+      localStorage.setItem(STORAGE_KEY, isDark.value ? 'dark' : 'light')
+    } catch {
+      /* storage unavailable (private mode…) — theme still applies for this visit */
+    }
   }
 
-  // Watch pour les changements - applique le thème quand isDark change
-  watch(isDark, () => applyTheme(), { immediate: true })
-
-  return {
-    isDark,
-    toggleTheme,
-    loadThemePreference
-  }
+  return { isDark, toggleTheme }
 }
-

@@ -1,255 +1,337 @@
 <template>
-  <v-container id="contact" class="section-spacing fade-in">
-    <v-row>
-      <v-col cols="12" md="7">
-        <v-card flat class="glass-card pa-8 rounded-xl" elevation="0">
-          <h3 class="section-title text-left">
-            <v-icon color="primary" class="mr-3">mdi-message</v-icon>
-            Send a Message
-          </h3>
-          
-          <v-form @submit.prevent="handleSubmit">
-            <v-text-field 
-              label="Your Name" 
-              v-model="localForm.name" 
-              variant="outlined" 
-              class="mb-3" 
-              required
-              prepend-inner-icon="mdi-account"
-              rounded="lg"
-            />
-            
-            <v-text-field 
-              label="Your Email" 
-              v-model="localForm.email" 
-              type="email" 
-              variant="outlined" 
-              class="mb-3"
-              required
-              prepend-inner-icon="mdi-email"
-              rounded="lg"
-            />
-            
-            <v-textarea 
-              label="Your Message" 
-              v-model="localForm.message" 
-              variant="outlined" 
-              class="mb-3" 
-              required
-              prepend-inner-icon="mdi-message-text"
-              rows="5"
-              rounded="lg"
-            />
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="contact-panel" v-reveal>
+        <div class="contact-glow" aria-hidden="true" />
 
-            <v-btn 
-              color="primary" 
-              type="submit" 
-              size="large"
-              rounded="xl" 
-              variant="flat"
-              :loading="sending"
-              class="btn-primary"
-            >
-              <v-icon start>mdi-send</v-icon>
-              Send Message
-            </v-btn>
+        <div class="contact-intro">
+          <SectionHeading index="04" eyebrow="Contact" title="Let's work together." />
 
-            <v-alert 
-              v-if="feedback" 
-              :type="feedback.includes('✅') ? 'success' : 'error'"
-              class="mt-4"
-              rounded="lg"
-              variant="tonal"
-            >
-              {{ feedback }}
-            </v-alert>
-          </v-form>
-        </v-card>
-      </v-col>
+          <p class="contact-text">
+            {{ profile.availability }}. Have an opportunity, a question or a project in mind?
+            My inbox is open.
+          </p>
 
-      <v-col cols="12" md="5">
-        <v-card flat class="glass-card pa-8 rounded-xl" elevation="0">
-          <h4 class="section-title text-left">
-            <v-icon color="primary" class="mr-2">mdi-information</v-icon>
-            Contact Info
-          </h4>
-          
+          <ul class="contact-list">
+            <li>
+              <span class="contact-icon"><v-icon :icon="mdiEmailOutline" size="20" /></span>
+              <span class="contact-item">
+                <small>Email</small>
+                <a :href="`mailto:${profile.email}`">{{ profile.email }}</a>
+              </span>
+              <button
+                type="button"
+                class="icon-btn copy-btn"
+                :aria-label="copied ? 'Email address copied' : 'Copy email address'"
+                :title="copied ? 'Copied!' : 'Copy'"
+                @click="copyEmail"
+              >
+                <v-icon :icon="copied ? mdiCheck : mdiContentCopy" size="18" />
+              </button>
+            </li>
+            <li v-for="s in links" :key="s.name">
+              <span class="contact-icon"><v-icon :icon="s.icon" size="20" /></span>
+              <span class="contact-item">
+                <small>{{ s.name }}</small>
+                <a :href="s.href" target="_blank" rel="noopener">{{ s.label }}</a>
+              </span>
+            </li>
+            <li>
+              <span class="contact-icon"><v-icon :icon="mdiMapMarkerOutline" size="20" /></span>
+              <span class="contact-item">
+                <small>Location</small>
+                <span>{{ profile.location }}</span>
+              </span>
+            </li>
+          </ul>
 
-            <div class="social-links mt-8">
-            <v-btn 
-                icon 
-                variant="text" 
-                href="https://github.com/Josephgit2025" 
-                target="_blank" 
-                class="social-btn"
-            >
-                <v-icon>mdi-github</v-icon>
-            </v-btn>
+          <a :href="profile.cv" :download="profile.cvFileName" class="btn btn-ghost">
+            <v-icon :icon="mdiTrayArrowDown" size="18" />
+            Download my CV
+          </a>
+        </div>
 
-            <v-btn 
-                icon 
-                variant="text" 
-                href="https://www.linkedin.com/in/joseph-marie-bilé-283470385" 
-                target="_blank" 
-                class="social-btn"
-            >
-                <v-icon>mdi-linkedin</v-icon>
-            </v-btn>
+        <v-form ref="formRef" class="contact-form" validate-on="submit lazy" @submit.prevent="handleSubmit">
+          <h3 class="form-title">Send me a message</h3>
 
-            <v-btn 
-                icon 
-                variant="text" 
-                href="mailto:joseph-marie.bile@epitech.eu" 
-                class="social-btn"
-            >
-                <v-icon>mdi-email</v-icon>
-            </v-btn>
-          </div>
+          <v-text-field
+            v-model="form.name"
+            label="Your name"
+            variant="outlined"
+            color="primary"
+            autocomplete="name"
+            :rules="[required]"
+          />
+          <v-text-field
+            v-model="form.email"
+            label="Your email"
+            type="email"
+            variant="outlined"
+            color="primary"
+            autocomplete="email"
+            :rules="[required, validEmail]"
+          />
+          <v-textarea
+            v-model="form.message"
+            label="Your message"
+            variant="outlined"
+            color="primary"
+            rows="5"
+            auto-grow
+            :rules="[required]"
+          />
 
-          <v-divider class="my-6"></v-divider>
+          <button type="submit" class="btn btn-primary btn-block" :disabled="sending">
+            <v-progress-circular v-if="sending" indeterminate size="18" width="2" />
+            <v-icon v-else :icon="mdiSend" size="18" />
+            {{ sending ? "Sending…" : "Send message" }}
+          </button>
 
-          <v-btn 
-            block
-            color="primary" 
-            size="large"
-            href="/joseph-portfolio/CV%20JOSEPH.pdf" 
-            download
-            rounded="xl"
-            variant="flat"
-            class="btn-primary"
+          <v-alert
+            v-if="feedback"
+            :type="feedback.type"
+            variant="tonal"
+            density="comfortable"
+            rounded="lg"
+            class="mt-4"
+            role="status"
           >
-            <v-icon start>mdi-download</v-icon>
-            Download CV
-          </v-btn>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+            {{ feedback.text }}
+          </v-alert>
+        </v-form>
+      </div>
+    </div>
+  </section>
 </template>
 
-
-
-
 <script setup>
-import { ref } from 'vue';
-import emailjs from 'emailjs-com';
+import { ref } from "vue";
+import {
+  mdiCheck,
+  mdiContentCopy,
+  mdiEmailOutline,
+  mdiMapMarkerOutline,
+  mdiSend,
+  mdiTrayArrowDown,
+} from "@mdi/js";
+import SectionHeading from "@/components/SectionHeading.vue";
+import { profile, socials } from "@/data/portfolio";
 
-const localForm = ref({ name: '', email: '', message: '' });
+const links = socials.filter((s) => s.name !== "Email");
+
+// ---------------------------------------------------------------------------
+// EmailJS configuration (https://dashboard.emailjs.com)
+// Set these as GitHub repository variables (see README). As long as the
+// template ID and public key are missing, the form falls back to opening the
+// visitor's email app with the message pre-filled, so no message is lost.
+// ---------------------------------------------------------------------------
+const EMAILJS = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_6no14mc",
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+};
+const emailjsReady = Boolean(EMAILJS.serviceId && EMAILJS.templateId && EMAILJS.publicKey);
+
+const formRef = ref(null);
+const form = ref({ name: "", email: "", message: "" });
 const sending = ref(false);
-const feedback = ref('');
+const feedback = ref(null);
 
-const handleSubmit = () => {
+const required = (v) => Boolean(v && v.trim()) || "This field is required";
+const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || "Please enter a valid email";
+
+const openMailApp = () => {
+  const { name, email, message } = form.value;
+  const subject = encodeURIComponent(`Portfolio contact: ${name}`);
+  const body = encodeURIComponent(`${message}\n\n${name}\n${email}`);
+  window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+};
+
+const handleSubmit = async () => {
+  const { valid } = await formRef.value.validate();
+  if (!valid) return;
+
+  feedback.value = null;
+
+  if (!emailjsReady) {
+    openMailApp();
+    feedback.value = {
+      type: "info",
+      text: "Your email app should open with your message ready to send. If it doesn't, write to me at " + profile.email,
+    };
+    return;
+  }
+
   sending.value = true;
-  feedback.value = '';
-
-  emailjs
-    .send(
-      'service_6no14mc',
-      'my_template_ID',
+  try {
+    const { default: emailjs } = await import("emailjs-com");
+    await emailjs.send(
+      EMAILJS.serviceId,
+      EMAILJS.templateId,
       {
-        from_name: localForm.value.name,
-        from_email: localForm.value.email,
-        message: localForm.value.message,
+        from_name: form.value.name,
+        from_email: form.value.email,
+        message: form.value.message,
       },
-      'my_public_key'
-    )
-    .then(() => {
-      feedback.value = 'Message envoyé avec succès ! ✅';
-      localForm.value = { name: '', email: '', message: '' };
-    })
-    .catch(() => {
-      feedback.value = 'Erreur lors de l\'envoi. ❌ Veuillez réessayer.';
-    })
-    .finally(() => {
-      sending.value = false;
-    });
+      EMAILJS.publicKey
+    );
+    feedback.value = { type: "success", text: "Thanks! Your message has been sent. I'll get back to you soon." };
+    formRef.value.reset();
+  } catch {
+    feedback.value = {
+      type: "error",
+      text: `Something went wrong. Please try again or email me directly at ${profile.email}.`,
+    };
+  } finally {
+    sending.value = false;
+  }
+};
+
+// Copy email to clipboard
+const copied = ref(false);
+let copiedTimer = null;
+const copyEmail = async () => {
+  try {
+    await navigator.clipboard.writeText(profile.email);
+    copied.value = true;
+    clearTimeout(copiedTimer);
+    copiedTimer = setTimeout(() => (copied.value = false), 2000);
+  } catch {
+    window.location.href = `mailto:${profile.email}`;
+  }
 };
 </script>
 
-
-
-
 <style scoped>
-.section-spacing {
-  padding: 80px 0;
+.contact-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  padding: clamp(1.6rem, 5vw, 4rem);
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  overflow: hidden;
+  isolation: isolate;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 40px;
-  text-align: center;
-  color: var(--text-primary);
+.contact-glow {
+  position: absolute;
+  z-index: -1;
+  width: 620px;
+  height: 620px;
+  left: -220px;
+  bottom: -320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow), transparent 65%);
+  opacity: 0.6;
+  filter: blur(30px);
 }
 
-.glass-card {
-  background: var(--card-bg) !important;
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--card-border);
-  transition: background 0.3s ease;
+.contact-intro :deep(.section-heading) {
+  margin-bottom: 1.4rem;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-  transition: all 0.3s ease;
+.contact-text {
+  font-size: 1.075rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  max-width: 30rem;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+.contact-list {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.contact-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--accent-text);
 }
 
 .contact-item {
   display: flex;
-  align-items: flex-start;
-  padding: 16px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  flex-direction: column;
+  min-width: 0;
 }
 
-.contact-item:hover {
-  background: rgba(102, 126, 234, 0.05);
-  transform: translateX(5px);
+.contact-item small {
+  font-size: 0.75rem;
+  color: var(--text-subtle);
 }
 
-.contact-label {
-  font-size: 0.85rem;
-  color: #999;
-  margin-bottom: 4px;
-}
-
-.contact-link {
-  color: #667eea;
-  text-decoration: none;
+.contact-item a,
+.contact-item span {
   font-weight: 600;
-  transition: all 0.3s ease;
+  color: var(--text);
+  text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
-.contact-link:hover {
-  color: #764ba2;
-  text-decoration: underline;
+.contact-item a:hover {
+  color: var(--accent-text);
 }
 
-.fade-in {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
+.copy-btn {
+  width: 36px;
+  height: 36px;
+  margin-left: 0.2rem;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+/* Form */
+.contact-form {
+  padding: clamp(1.4rem, 3vw, 2rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+
+.form-title {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+}
+
+.contact-form :deep(.v-input) {
+  margin-bottom: 0.4rem;
+}
+
+.contact-form .btn {
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 959px) {
+  .contact-panel {
+    grid-template-columns: 1fr;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-@media (max-width: 960px) {
-  .section-title {
-    font-size: 2rem;
+@media (max-width: 600px) {
+  .contact-panel {
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.1rem;
+  }
+
+  .contact-form {
+    padding: 1.2rem 1rem;
   }
 }
 </style>
