@@ -44,8 +44,6 @@ export const profile = {
   school: "EPITECH Nantes",
   location: "Nantes, France",
   email: "joseph-marie.bile@epitech.eu",
-  // Short status shown in the hero badge and the contact section
-  availability: "Open to a work-study contract",
   // Rotating words in the hero: "I build …"
   roles: [
     "automated CI/CD pipelines",

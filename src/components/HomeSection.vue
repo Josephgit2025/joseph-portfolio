@@ -8,11 +8,6 @@
 
     <div class="container hero-inner">
       <div class="hero-copy">
-        <a href="#contact" class="status-pill">
-          <span class="status-dot" aria-hidden="true" />
-          {{ profile.availability }}
-          <v-icon :icon="mdiArrowRight" size="16" class="status-arrow" />
-        </a>
 
         <p class="hero-hello">Hello, I'm</p>
         <h1 class="hero-title">
@@ -211,54 +206,7 @@ onBeforeUnmount(() => clearTimeout(timer));
 .hero-copy > :nth-child(6) { animation-delay: 0.38s; }
 .hero-copy > :nth-child(7) { animation-delay: 0.46s; }
 
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 0.9rem 0.45rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--accent-border);
-  background: var(--accent-soft);
-  color: var(--text);
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background-color 0.2s ease, transform 0.25s var(--ease-out);
-}
-
-.status-pill:hover {
-  transform: translateY(-1px);
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
-}
-
-.status-dot {
-  position: relative;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.status-dot::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-.status-arrow {
-  color: var(--accent-text);
-  transition: transform 0.25s var(--ease-out);
-}
-
-.status-pill:hover .status-arrow {
-  transform: translateX(3px);
-}
-
 .hero-hello {
-  margin-top: 2rem;
   font-family: var(--font-mono);
   font-size: 0.95rem;
   color: var(--text-subtle);
@@ -524,14 +472,6 @@ onBeforeUnmount(() => clearTimeout(timer));
   }
 }
 
-@keyframes ping {
-  75%,
-  100% {
-    transform: scale(2.6);
-    opacity: 0;
-  }
-}
-
 @keyframes blink {
   50% {
     opacity: 0;
@@ -637,10 +577,6 @@ onBeforeUnmount(() => clearTimeout(timer));
 
   .float-school small {
     display: none;
-  }
-
-  .hero-hello {
-    margin-top: 1.6rem;
   }
 
   .hero-actions .btn {

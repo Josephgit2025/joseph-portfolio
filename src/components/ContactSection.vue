@@ -8,8 +8,7 @@
           <SectionHeading index="04" eyebrow="Contact" title="Let's work together." />
 
           <p class="contact-text">
-            {{ profile.availability }}. Have an opportunity, a question or a project in mind?
-            My inbox is open.
+            Have an opportunity, a question or a project in mind? My inbox is open.
           </p>
 
           <ul class="contact-list">

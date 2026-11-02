@@ -26,7 +26,6 @@ Tout le contenu du site (profil, compétences, formation, projets) est dans **`s
 - **Images** : place-les dans `src/img/`, de préférence en `.webp` (environ 1 400 px de large max).
   Utilise `imageFit: "contain"` pour un logo carré, `"cover"` pour une capture ou un schéma.
 - **CV** : remplace `public/CV JOSEPH.pdf` en gardant le même nom.
-- **Statut** : le badge « Open to a work-study contract » se modifie via `profile.availability`.
 
 ## Formulaire de contact (EmailJS)
 

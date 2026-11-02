@@ -11,8 +11,7 @@
           </p>
           <p class="about-text">
             I build <strong>automated, containerized solutions</strong>. I'm passionate about
-            <strong>DevOps, AI and backend development</strong>, and I'm looking for a
-            <strong>2-year work-study contract starting September 2026</strong>.
+            <strong>DevOps, AI and backend development</strong>.
           </p>
 
           <dl class="stats">
